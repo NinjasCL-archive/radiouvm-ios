@@ -28,7 +28,16 @@
  */
 @property (strong, nonatomic)  FSAudioController * audioController;
 
+/*!
+ * This holds the volumePlaceholder that will become the MPVolumeView
+ */
 @property (weak, nonatomic) IBOutlet UIView *volumePlaceholder;
+
+/*!
+ * This property indicates if the streaming
+ * is playing or paused;
+ */
+@property (nonatomic) BOOL paused;
 
 @end
 
@@ -72,11 +81,22 @@
     // Create the Volume View
     // See https://developer.apple.com/library/ios/documentation/mediaplayer/reference/MPVolumeView_Class/index.html
     
-    self.volumePlaceholder.backgroundColor = [UIColor clearColor];
+    self.volumePlaceholder.backgroundColor = [UIColor blackColor];
+    
+    self.volumePlaceholder.layer.cornerRadius = 10;
     
     MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame: self.volumePlaceholder.bounds];
     
+    
+    volumeView.tintColor = [UIColor redColor];
+    
     [self.volumePlaceholder addSubview:volumeView];
+    
+    // Listen to Remote Controls
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    
+    
 }
 
 /*
@@ -86,6 +106,8 @@
  */
 - (void) viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
 }
 
 /*!
@@ -118,17 +140,26 @@
     // Show or dismiss the loading screen
     // depending on the state
     
+    self.paused = YES;
+    
     switch (state) {
             
         case kFsAudioStreamRetrievingURL:
         case kFsAudioStreamBuffering:
         case kFsAudioStreamSeeking:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            
             [SVProgressHUD show];
             break;
             
         default:
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             [SVProgressHUD dismiss];
             break;
+    }
+    
+    if (state == kFsAudioStreamPlaying) {
+        self.paused = NO;
     }
     
 }
@@ -165,6 +196,8 @@
     
     // Show a Message to the User
     [UVMMessageHelper showStreamingErrorMessage];
+    
+    self.paused = YES;
 }
 
 #pragma mark - IBActions
@@ -179,6 +212,15 @@
         self.audioController.url = radio.url;
     }
     
+    
+//     If we are paused, call pause again to unpause so
+//     that the stream playback will continue.
+    
+    if (self.paused) {
+        [self.audioController stop];
+        self.paused = NO;
+    }
+    
     [self.audioController play];
     
 }
@@ -186,7 +228,34 @@
 - (IBAction)stop:(id)sender {
     
     [self.audioController stop];
+    self.paused = YES;
+}
+
+#pragma mark - Remote Notifications
+
+/*!
+ * This method enables remote controlling
+ * the streamer. For using the iOS native controls.
+ */
+- (void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent
+{
+    NSLog(@"Remote Control Received");
     
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        switch (receivedEvent.subtype) {
+            case UIEventSubtypeRemoteControlPause:
+            case UIEventSubtypeRemoteControlPlay:
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                if (self.paused) {
+                    [self play:self];
+                } else {
+                    [self stop:self];
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 @end
