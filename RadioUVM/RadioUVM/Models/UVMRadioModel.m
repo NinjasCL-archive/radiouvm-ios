@@ -22,7 +22,7 @@
     UVMRadioModel * radio1 = [UVMRadioModel new];
 
     // Radio UVM FM
-    radio1.url = [NSURL URLWithString:@"http://200.24.229.253:8020/"];
+    radio1.url = [NSURL URLWithString:@"http://200.24.229.253:8020/listen.pls"];
     
     return @[radio1];
 }

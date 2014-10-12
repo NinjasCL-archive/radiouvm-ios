@@ -40,22 +40,33 @@
                                     <segue destination="Xuw-2S-eoX" kind="push" id="s2A-gS-nTx"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-54-fzR" customClass="MPVolumeView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-54-fzR">
                                 <rect key="frame" x="20" y="408" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.062745098040000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bmy-bQ-aX3">
+                                <rect key="frame" x="116" y="40" width="88" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gil-nO-g50"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="eZI-u2-PYa">
                         <barButtonItem key="backBarButtonItem" title=" " id="Wy2-XG-QPl"/>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="audioController" destination="wQN-T2-Ij1" id="Jds-yL-m4z"/>
+                        <outlet property="volumePlaceholder" destination="aFo-54-fzR" id="wv0-ek-Iqp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <customObject id="wQN-T2-Ij1"/>
             </objects>
             <point key="canvasLocation" x="664" y="138"/>
         </scene>
@@ -78,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="234" y="138"/>
         </scene>
-        <!--View Controller - Acerca de Radio UVM-->
+        <!--About View Controller - Acerca de Radio UVM-->
         <scene sceneID="r48-DI-zKH">
             <objects>
-                <viewController id="Xuw-2S-eoX" sceneMemberID="viewController">
+                <viewController id="Xuw-2S-eoX" customClass="UVMAboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bLz-nM-9n0"/>
                         <viewControllerLayoutGuide type="bottom" id="2j1-tq-GFr"/>

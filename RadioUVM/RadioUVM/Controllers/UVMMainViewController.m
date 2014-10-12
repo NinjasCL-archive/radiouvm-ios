@@ -15,6 +15,8 @@
 #import "UVMRadioModel.h"
 #import "UVMMessageHelper.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
 @interface UVMMainViewController ()
 
 /*!
@@ -24,7 +26,9 @@
  * Because the Storyboard holds the reference
  * to the property.
  */
-@property (strong, nonatomic) IBOutlet FSAudioController * audioController;
+@property (strong, nonatomic)  FSAudioController * audioController;
+
+@property (weak, nonatomic) IBOutlet UIView *volumePlaceholder;
 
 @end
 
@@ -48,17 +52,31 @@
 /*!
  * In View Did Load
  * we register to the Audio Streamer Notifications
+ * And set the views
  */
 - (void) viewDidLoad {
+    [super viewDidLoad];
+    
+    // Listen to State Change Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(audioStreamStateDidChange:)
                                                  name:FSAudioStreamStateChangeNotification
                                                object:nil];
     
+    // Listen to Error Notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(audioStreamErrorOccurred:)
                                                  name:FSAudioStreamErrorNotification
                                                object:nil];
+    
+    // Create the Volume View
+    // See https://developer.apple.com/library/ios/documentation/mediaplayer/reference/MPVolumeView_Class/index.html
+    
+    self.volumePlaceholder.backgroundColor = [UIColor clearColor];
+    
+    MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame: self.volumePlaceholder.bounds];
+    
+    [self.volumePlaceholder addSubview:volumeView];
 }
 
 /*
@@ -68,6 +86,17 @@
  */
 - (void) viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+/*!
+ * Just before view will appear
+ * hide the navbar
+ */
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Hide NavBar
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 #pragma mark - Audio Streamer Delegate
@@ -97,9 +126,7 @@
             [SVProgressHUD show];
             break;
             
-        case kFsAudioStreamStopped:
-        case kFsAudioStreamPlaying:
-        case kFsAudioStreamFailed:
+        default:
             [SVProgressHUD dismiss];
             break;
     }
