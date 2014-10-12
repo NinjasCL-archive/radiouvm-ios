@@ -30,6 +30,7 @@
 		9A8BF37919EB074B00126775 /* UVMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BF37819EB074B00126775 /* UVMAboutViewController.m */; };
 		9A8BF37D19EB076F00126775 /* UVMMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BF37C19EB076F00126775 /* UVMMessageHelper.m */; };
 		9A8BF38119EB078800126775 /* UVMRadioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BF38019EB078800126775 /* UVMRadioModel.m */; };
+		9A8BF38419EB143000126775 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8BF38319EB143000126775 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		9A8BF37C19EB076F00126775 /* UVMMessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVMMessageHelper.m; sourceTree = "<group>"; };
 		9A8BF37F19EB078800126775 /* UVMRadioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVMRadioModel.h; sourceTree = "<group>"; };
 		9A8BF38019EB078800126775 /* UVMRadioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVMRadioModel.m; sourceTree = "<group>"; };
+		9A8BF38319EB143000126775 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E4A17D82C09B400692EB677F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A8BF38419EB143000126775 /* MediaPlayer.framework in Frameworks */,
 				9A8BF32F19EAFBA500126775 /* CoreGraphics.framework in Frameworks */,
 				9A8BF33119EAFBA500126775 /* UIKit.framework in Frameworks */,
 				9A8BF32D19EAFBA500126775 /* Foundation.framework in Frameworks */,
@@ -125,6 +128,7 @@
 		9A8BF32B19EAFBA500126775 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A8BF38319EB143000126775 /* MediaPlayer.framework */,
 				9A8BF32C19EAFBA500126775 /* Foundation.framework */,
 				9A8BF32E19EAFBA500126775 /* CoreGraphics.framework */,
 				9A8BF33019EAFBA500126775 /* UIKit.framework */,

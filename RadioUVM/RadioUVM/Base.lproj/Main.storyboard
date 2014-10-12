@@ -40,10 +40,9 @@
                                     <segue destination="Xuw-2S-eoX" kind="push" id="s2A-gS-nTx"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-54-fzR">
-                                <rect key="frame" x="20" y="402" width="280" height="32"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-54-fzR" customClass="MPVolumeView">
+                                <rect key="frame" x="20" y="408" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.062745098040000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -19,16 +19,29 @@
 
 /*!
  * This property holds the audioController that plays
- * the radio stream. Needs to be a weak property
+ * the radio stream. Needs to be a strong property
  * in order to keep playing the stream.
  * Because the Storyboard holds the reference
  * to the property.
  */
-@property (weak, nonatomic) IBOutlet FSAudioController * audioController;
+@property (strong, nonatomic) IBOutlet FSAudioController * audioController;
 
 @end
 
 @implementation UVMMainViewController
+
+#pragma mark - Properties
+
+
+- (FSAudioController *) audioController {
+
+    // Lazy allocation method
+    if (!_audioController) {
+        _audioController = [[FSAudioController alloc] init];
+    }
+    
+    return _audioController;
+}
 
 #pragma mark - View Life Cycle
 
@@ -46,11 +59,6 @@
                                              selector:@selector(audioStreamErrorOccurred:)
                                                  name:FSAudioStreamErrorNotification
                                                object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(audioStreamMetaDataAvailable:)
-                                                 name:FSAudioStreamMetaDataNotification
-                                               object:nil];
 }
 
 /*
@@ -63,6 +71,40 @@
 }
 
 #pragma mark - Audio Streamer Delegate
+
+/*!
+ * This method is called when the streamer
+ * is conecting or stopped.
+ * We will show a Loading Screen.
+ */
+
+- (void) audioStreamStateDidChange: (NSNotification *) notification {
+    
+    NSLog(@"Audio State Change");
+    
+    NSDictionary *dict = [notification userInfo];
+    
+    int state = [[dict valueForKey:FSAudioStreamNotificationKey_State] intValue];
+    
+    // Show or dismiss the loading screen
+    // depending on the state
+    
+    switch (state) {
+            
+        case kFsAudioStreamRetrievingURL:
+        case kFsAudioStreamBuffering:
+        case kFsAudioStreamSeeking:
+            [SVProgressHUD show];
+            break;
+            
+        case kFsAudioStreamStopped:
+        case kFsAudioStreamPlaying:
+        case kFsAudioStreamFailed:
+            [SVProgressHUD dismiss];
+            break;
+    }
+    
+}
 
 /*!
  * This method is called when
@@ -95,6 +137,28 @@
     }
     
     // Show a Message to the User
+    [UVMMessageHelper showStreamingErrorMessage];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)play:(id)sender {
+    
+    // Set the radio for the streamer
+    if(!self.audioController.url) {
+        
+        UVMRadioModel * radio = [[UVMRadioModel allRadios] firstObject];
+        
+        self.audioController.url = radio.url;
+    }
+    
+    [self.audioController play];
+    
+}
+
+- (IBAction)stop:(id)sender {
+    
+    [self.audioController stop];
     
 }
 
