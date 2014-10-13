@@ -39,6 +39,15 @@
  */
 @property (nonatomic) BOOL paused;
 
+
+/*!
+ * This button changes its icon
+ * depending on the streaming
+ * state
+ */
+@property (weak, nonatomic) IBOutlet UIButton *playStopButton;
+
+
 @end
 
 @implementation UVMMainViewController
@@ -54,6 +63,23 @@
     }
     
     return _audioController;
+}
+
+
+- (void) setPaused:(BOOL)paused {
+    _paused = paused;
+    
+    // Set the image on pause state change.
+    
+    static UIImage * image;
+    
+    image = [UIImage imageNamed:@"286"];
+    
+    if (!paused) {
+        image = [UIImage imageNamed:@"295"];
+    }
+    
+    [self.playStopButton setImage:image forState:UIControlStateNormal];
 }
 
 #pragma mark - View Life Cycle
@@ -94,6 +120,9 @@
     
     // Listen to Remote Controls
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    // Set paused default state
+    self.paused = YES;
     
     
     
@@ -218,7 +247,6 @@
     
     if (self.paused) {
         [self.audioController stop];
-        self.paused = NO;
     }
     
     [self.audioController play];
@@ -230,6 +258,11 @@
     [self.audioController stop];
     self.paused = YES;
 }
+
+- (IBAction)playStop:(id)sender {
+    [self togglePlayStop];
+}
+
 
 #pragma mark - Remote Notifications
 
@@ -246,11 +279,7 @@
             case UIEventSubtypeRemoteControlPause:
             case UIEventSubtypeRemoteControlPlay:
             case UIEventSubtypeRemoteControlTogglePlayPause:
-                if (self.paused) {
-                    [self play:self];
-                } else {
-                    [self stop:self];
-                }
+                [self togglePlayStop];
                 break;
             default:
                 break;
@@ -258,4 +287,13 @@
     }
 }
 
+
+#pragma mark - Private Methods
+- (void) togglePlayStop {
+    if (self.paused) {
+        [self play:self];
+    } else {
+        [self stop:self];
+    }
+}
 @end

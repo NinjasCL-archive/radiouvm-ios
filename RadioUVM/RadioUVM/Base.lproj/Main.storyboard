@@ -25,19 +25,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G29-1H-EHY">
-                                <rect key="frame" x="103" y="340" width="112" height="121"/>
+                                <rect key="frame" x="104" y="319" width="112" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logouvm.png" translatesAutoresizingMaskIntoConstraints="NO" id="sbw-JF-ZuX">
-                                <rect key="frame" x="110" y="351" width="100" height="100"/>
+                                <rect key="frame" x="110" y="340" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liT-cb-47Q">
-                                <rect key="frame" x="0.0" y="459" width="320" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liT-cb-47Q">
+                                <rect key="frame" x="90" y="453" width="135" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Acerca de">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Info" image="205">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFo-54-fzR">
-                                <rect key="frame" x="90" y="219" width="140" height="20"/>
+                                <rect key="frame" x="90" y="232" width="140" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.55294117649999996" blue="0.062745098040000002" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -60,6 +60,20 @@
                                     <action selector="play:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gil-nO-g50"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kuw-sq-oG5">
+                                <rect key="frame" x="20" y="212" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="286">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="VOB-pN-9Qv"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="084" translatesAutoresizingMaskIntoConstraints="NO" id="iBa-Et-4C1">
+                                <rect key="frame" x="255" y="228" width="25" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -68,6 +82,7 @@
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="playStopButton" destination="Kuw-sq-oG5" id="mRb-TI-Nb7"/>
                         <outlet property="volumePlaceholder" destination="aFo-54-fzR" id="wv0-ek-Iqp"/>
                     </connections>
                 </viewController>
@@ -80,6 +95,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4qr-OF-6tg" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="aW0-NE-BoK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -122,6 +138,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="084" width="24" height="24"/>
+        <image name="205" width="24" height="24"/>
+        <image name="286" width="24" height="24"/>
         <image name="bg.jpg" width="1920" height="1080"/>
         <image name="logo.png" width="400" height="376"/>
         <image name="logouvm.png" width="227" height="249"/>
