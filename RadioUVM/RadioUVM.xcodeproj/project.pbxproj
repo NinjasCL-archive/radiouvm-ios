@@ -31,6 +31,7 @@
 		9A8BF37D19EB076F00126775 /* UVMMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BF37C19EB076F00126775 /* UVMMessageHelper.m */; };
 		9A8BF38119EB078800126775 /* UVMRadioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8BF38019EB078800126775 /* UVMRadioModel.m */; };
 		9A8BF38419EB143000126775 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8BF38319EB143000126775 /* MediaPlayer.framework */; };
+		9A8BF38619EB5B1C00126775 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 9A8BF38519EB5B1C00126775 /* about.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9A8BF37F19EB078800126775 /* UVMRadioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVMRadioModel.h; sourceTree = "<group>"; };
 		9A8BF38019EB078800126775 /* UVMRadioModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVMRadioModel.m; sourceTree = "<group>"; };
 		9A8BF38319EB143000126775 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		9A8BF38519EB5B1C00126775 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		E4A17D82C09B400692EB677F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -185,11 +187,8 @@
 		9A8BF36119EAFF2500126775 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9A8BF36219EAFF2500126775 /* bg.jpg */,
-				9A8BF36319EAFF2500126775 /* bgradio.jpg */,
-				9A8BF36419EAFF2500126775 /* logo.png */,
-				9A8BF36519EAFF2500126775 /* logouvm.png */,
-				9A8BF36619EAFF2500126775 /* slider2.jpg */,
+				9A8BF38519EB5B1C00126775 /* about.html */,
+				9A8BF38719EB5B2400126775 /* img */,
 			);
 			name = Assets;
 			path = assets;
@@ -263,6 +262,18 @@
 				9A8BF38019EB078800126775 /* UVMRadioModel.m */,
 			);
 			name = "Radio Model";
+			sourceTree = "<group>";
+		};
+		9A8BF38719EB5B2400126775 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				9A8BF36219EAFF2500126775 /* bg.jpg */,
+				9A8BF36319EAFF2500126775 /* bgradio.jpg */,
+				9A8BF36419EAFF2500126775 /* logo.png */,
+				9A8BF36519EAFF2500126775 /* logouvm.png */,
+				9A8BF36619EAFF2500126775 /* slider2.jpg */,
+			);
+			name = img;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				9A8BF36919EAFF2500126775 /* logo.png in Resources */,
 				9A8BF36719EAFF2500126775 /* bg.jpg in Resources */,
 				9A8BF36819EAFF2500126775 /* bgradio.jpg in Resources */,
+				9A8BF38619EB5B1C00126775 /* about.html in Resources */,
 				9A8BF34019EAFBA500126775 /* Main.storyboard in Resources */,
 				9A8BF36B19EAFF2500126775 /* slider2.jpg in Resources */,
 			);

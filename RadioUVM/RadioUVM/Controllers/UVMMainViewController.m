@@ -147,7 +147,14 @@
     [super viewWillAppear:animated];
     
     // Hide NavBar
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+/*!
+ * Set the status bar as white colour
+ */
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Audio Streamer Delegate
