@@ -28,6 +28,10 @@
     [super viewDidLoad];
     
     self.webView.delegate = self;
+   
+    // Set red colour to back button
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor redColor]];    
 }
 
 /*!

@@ -263,6 +263,7 @@
 - (IBAction)stop:(id)sender {
     
     [self.audioController stop];
+    
     self.paused = YES;
 }
 
