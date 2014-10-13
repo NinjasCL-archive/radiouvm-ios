@@ -154,7 +154,9 @@
  * Set the status bar as white colour
  */
 - (UIStatusBarStyle) preferredStatusBarStyle {
+
     return UIStatusBarStyleLightContent;
+    
 }
 
 #pragma mark - Audio Streamer Delegate
