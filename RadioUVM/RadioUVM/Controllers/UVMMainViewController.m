@@ -14,6 +14,7 @@
 
 #import "UVMRadioModel.h"
 #import "UVMMessageHelper.h"
+#import "UVMAnalyticsHelper.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -46,6 +47,13 @@
  * state
  */
 @property (weak, nonatomic) IBOutlet UIButton *playStopButton;
+
+/*!
+ * When the play button was pressed
+ * used to calculate the time interval
+ * in google analytics
+ */
+@property (nonatomic) NSDate * playButtonPressedAt;
 
 
 @end
@@ -124,6 +132,8 @@
     // Set paused default state
     self.paused = YES;
     
+    // Initial Value
+    self.playButtonPressedAt = [NSDate date];
     
     
 }
@@ -148,6 +158,9 @@
     
     // Hide NavBar
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    // Google Analytics
+    self.screenName = @"Radio Screen";
 }
 
 /*!
@@ -197,7 +210,17 @@
     }
     
     if (state == kFsAudioStreamPlaying) {
+        [UVMAnalyticsHelper trackStartPlaying];
+        
+        self.playButtonPressedAt = [NSDate date];
+        
         self.paused = NO;
+    }
+    
+    if (state == kFsAudioStreamPaused || state == kFsAudioStreamStopped) {
+        [UVMAnalyticsHelper trackStopPlaying];
+        
+        [UVMAnalyticsHelper trackTotalListeningTimeSinceDate:self.playButtonPressedAt];
     }
     
 }
@@ -235,12 +258,15 @@
     // Show a Message to the User
     [UVMMessageHelper showStreamingErrorMessage];
     
+    [UVMAnalyticsHelper trackSteamerError];
+    
     self.paused = YES;
 }
 
 #pragma mark - IBActions
 
-- (IBAction)play:(id)sender {
+// Plays the Streamer
+- (void) play : (id) sender {
     
     // Set the radio for the streamer
     if(!self.audioController.url) {
@@ -262,7 +288,8 @@
     
 }
 
-- (IBAction)stop:(id)sender {
+// Stops the streamer
+- (void) stop : (id) sender {
     
     [self.audioController stop];
     
@@ -272,6 +299,16 @@
 - (IBAction)playStop:(id)sender {
     [self togglePlayStop];
 }
+
+
+- (IBAction)bigPlayButton:(id)sender {
+    [UVMAnalyticsHelper trackBigPlayButton];
+}
+
+- (IBAction)smallPlayButton:(id)sender {
+    [UVMAnalyticsHelper trackSmallPlayButton];
+}
+
 
 
 #pragma mark - Remote Notifications
@@ -295,6 +332,8 @@
                 break;
         }
     }
+    
+    [UVMAnalyticsHelper trackRemoteControls];
 }
 
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48D7EEC1AEAE4C44A4BC1CC7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A17D82C09B400692EB677F /* libPods.a */; };
+		9A0251CC1A0AD015008C153E /* UVMAnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0251CB1A0AD015008C153E /* UVMAnalyticsHelper.m */; };
 		9A8BF32D19EAFBA500126775 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8BF32C19EAFBA500126775 /* Foundation.framework */; };
 		9A8BF32F19EAFBA500126775 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8BF32E19EAFBA500126775 /* CoreGraphics.framework */; };
 		9A8BF33119EAFBA500126775 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A8BF33019EAFBA500126775 /* UIKit.framework */; };
@@ -46,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		5594BF96EF1D4B1D934BF3AF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9A0251CA1A0AD015008C153E /* UVMAnalyticsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVMAnalyticsHelper.h; sourceTree = "<group>"; };
+		9A0251CB1A0AD015008C153E /* UVMAnalyticsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVMAnalyticsHelper.m; sourceTree = "<group>"; };
 		9A8BF32919EAFBA500126775 /* RadioUVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioUVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A8BF32C19EAFBA500126775 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A8BF32E19EAFBA500126775 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A0251CD1A0AD046008C153E /* Analytics Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9A0251CA1A0AD015008C153E /* UVMAnalyticsHelper.h */,
+				9A0251CB1A0AD015008C153E /* UVMAnalyticsHelper.m */,
+			);
+			name = "Analytics Helper";
+			sourceTree = "<group>";
+		};
 		9A8BF32019EAFBA500126775 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				9A8BF37E19EB077400126775 /* Message Helper */,
+				9A0251CD1A0AD046008C153E /* Analytics Helper */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -426,6 +439,7 @@
 				9A8BF37919EB074B00126775 /* UVMAboutViewController.m in Sources */,
 				9A8BF38119EB078800126775 /* UVMRadioModel.m in Sources */,
 				9A8BF37D19EB076F00126775 /* UVMMessageHelper.m in Sources */,
+				9A0251CC1A0AD015008C153E /* UVMAnalyticsHelper.m in Sources */,
 				9A8BF37519EB073100126775 /* UVMMainViewController.m in Sources */,
 				9A8BF33D19EAFBA500126775 /* UVMAppDelegate.m in Sources */,
 			);

@@ -7,12 +7,25 @@
 //
 
 #import "UVMAppDelegate.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import "UVMAnalyticsHelper.h"
 
 @implementation UVMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Google Analytics
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // How often send data to Google Servers
+    [GAI sharedInstance].dispatchInterval = 120;
+    
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    [[GAI sharedInstance] trackerWithTrackingId:kUVMAnalyticsKey];
+    
     return YES;
 }
 							

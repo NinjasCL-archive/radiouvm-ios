@@ -46,6 +46,9 @@
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     self.webView.hidden = YES;
+    
+    // Tracker for Google Analytics
+    self.screenName = @"About Screen";
 }
 
 /*!

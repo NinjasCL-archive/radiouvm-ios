@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics-iOS-SDK/GAITrackedViewController.h>
 
-@interface UVMMainViewController : UIViewController
+@interface UVMMainViewController : GAITrackedViewController
 
 @end

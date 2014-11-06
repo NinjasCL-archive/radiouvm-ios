@@ -72,6 +72,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="bigPlayButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OQ0-p7-e08"/>
                                     <action selector="playStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="N32-Uu-QaP"/>
                                 </connections>
                             </button>
@@ -86,6 +87,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playStop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="VOB-pN-9Qv"/>
+                                    <action selector="smallPlayButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jcI-JP-Q7v"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="084" translatesAutoresizingMaskIntoConstraints="NO" id="iBa-Et-4C1">

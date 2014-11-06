@@ -1,5 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/FreeStreamer" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/SVProgressHUD" $(SDKROOT)/usr/include/libxml2
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/FreeStreamer" -isystem "${PODS_ROOT}/Headers/Reachability" -isystem "${PODS_ROOT}/Headers/SVProgressHUD"
-OTHER_LDFLAGS = -ObjC -lstdc++ -lxml2 -framework AVFoundation -framework AudioToolbox -framework CFNetwork -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/FreeStreamer" "${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/SVProgressHUD" $(SDKROOT)/usr/include/libxml2 $(SDKROOT)/usr/include/libz
+LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/GoogleAnalytics-iOS-SDK"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/FreeStreamer" -isystem "${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK" -isystem "${PODS_ROOT}/Headers/Reachability" -isystem "${PODS_ROOT}/Headers/SVProgressHUD"
+OTHER_LDFLAGS = -ObjC -lGoogleAnalyticsServices -lsqlite3 -lstdc++ -lxml2 -lz -framework AVFoundation -framework AudioToolbox -framework CFNetwork -framework CoreData -framework Foundation -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration -framework UIKit
 PODS_ROOT = ${SRCROOT}/Pods
